@@ -370,6 +370,10 @@ function jsFunction(value)
  var sac=document.getElementById("STD").value;
 
 alert(sac);	
+alert(sac);	
+
+alert(sac);	
+
 	
 }
 
