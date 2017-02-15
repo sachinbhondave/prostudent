@@ -94,8 +94,20 @@ String pincode=null;
 String email=null;
 String birth;
 String contact=null;
-
-
+String regfee=null;
+public String getRegfee() {
+	return regfee;
+}
+public void setRegfee(String regfee) {
+	this.regfee = regfee;
+}
+public String getChoice() {
+	return choice;
+}
+public void setChoice(String choice) {
+	this.choice = choice;
+}
+String choice=null;
 	
 	}
 	
