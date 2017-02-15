@@ -59,7 +59,7 @@ public class Csavestudent extends HttpServlet {
  		stud.setEmail(request.getParameter("emailid"));
 		stud.setBirth(request.getParameter("dob"));
  		stud.setContact(request.getParameter("mobileno"));
- 		stud.setChoice(request.getParameter("choice"));
+ 		stud.setChoice(request.getParameter("choose"));
  		stud.setRegfee(request.getParameter("regfee"));
 
  		System.out.println("setContact"+request.getParameter("mobileno"));
@@ -71,7 +71,7 @@ public class Csavestudent extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("http://localhost:7767/student/aboue.jsp");
+		response.sendRedirect("http://localhost:7767/student/about.jsp");
 	}
 
 }
