@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.itextpdf.text.log.SysoLogger"%>
 <html>
 <head>
 <title>Aviation School | student Registration</title>
@@ -145,9 +146,9 @@ id="personaladdress" size="30"></td>
 </tr>
 
 <%
-
+System.out.println("value of dropdown::"+ request.getParameter("STD"));
 ArrayList al = new ArrayList();
-
+String reg_fee="";
 Properties properties = new Properties();
 properties.setProperty("user", "root");
 properties.setProperty("password", "sachin");
@@ -157,6 +158,8 @@ properties.setProperty("autoReconnect", "false");
 Connection connection = null;
 Statement statement = null;
 ResultSet rs1 = null;
+ResultSet rs2 = null;
+
   try
   {
 Class.forName("com.mysql.jdbc.Driver"); 
@@ -167,29 +170,33 @@ Class.forName("com.mysql.jdbc.Driver");
   }
   
 java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student",properties); 
-out.println("welcome_con"+con); 
 PreparedStatement st=null;
-//String ne="1";
-st.setString(1,"1");
-String executeQuery="select examdate from student.exam where examstd=?"; 
+PreparedStatement st1=null;
 
-st= con.prepareStatement(executeQuery); 
+String ne="1";
+String executeQuery="select examdate from student.exam "; 
+String executeQuery1="SELECT kl.onetime FROM student.charge kl where kl.name='registration' "; 
+
+st= con.prepareStatement(executeQuery);  
+st1= con.prepareStatement(executeQuery1);  
+
 rs1=st.executeQuery();
 
-if(rs1.next()) 
+rs2=st1.executeQuery();
+
+while(rs1.next()) 
 { 
-	al.add(rs1.getString("examdate"));
+ al.add(rs1.getString("examdate"));
 
 } 
+ 
 
-
-else 
+while(rs2.next()) 
 { 
-out.println("password try again"); 
+
+  reg_fee=(rs2.getString("onetime"));
 } 
- 
-out.print("newal"+al.toString());
- 
+
 %>
 
 
@@ -224,26 +231,21 @@ out.print("newal"+al.toString());
    <%  for(int i = 0; i < al.size(); i++) {
            String option = (String)al.get(i);
    %>
-   <option value="<%= option %>"><%= option %></option>
-   <% } %>
+  
+   <option value="<%= option %>"><%= option %>
+   </option>
+   <% } 
+   
+   %>
 </select></td>
-
-
-
- <td><select Name="end">
-<option value="-1" selected>select..</option>
-<option  selected>45=65645-909</option>
- </select></td>
-
 </tr>
 <tr>
 
 <tr>
 <td>Registration-Fees</td>
-<td><input type="text" name="mobileno" id="mobileno" size="30"></td>
+<td><input type="text" name="regfee" id="regfee" value="<%= reg_fee  %>" size="30"></td>
 </tr>
 <tr>
-
 
 <td><input type="reset"></td>
 <td colspan="2"><input type="submit" value="Submit Form" /></td>
@@ -368,12 +370,7 @@ function validate()
 function jsFunction(value)
 {
  var sac=document.getElementById("STD").value;
-
-alert(sac);	
-alert(sac);	
-
-alert(sac);	
-
+ 
 	
 }
 
