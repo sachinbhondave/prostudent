@@ -152,7 +152,7 @@ Properties properties = new Properties();
 properties.setProperty("user", "root");
 properties.setProperty("password", "sachin");
 properties.setProperty("useSSL", "false");
-properties.setProperty("autoReconnect", "false");
+properties.setProperty("autoReconnect", "true");
  
 Connection connection = null;
 Statement statement = null;
@@ -172,7 +172,6 @@ java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:33
 PreparedStatement st=null;
 PreparedStatement st1=null;
 
-String ne="1";
 String executeQuery="select examdate from student.exam "; 
 String executeQuery1="SELECT kl.onetime FROM student.charge kl where kl.name='registration' "; 
 
@@ -195,7 +194,7 @@ while(rs2.next())
 
   reg_fee=(rs2.getString("onetime"));
 } 
-
+con.close();
 %>
 
 

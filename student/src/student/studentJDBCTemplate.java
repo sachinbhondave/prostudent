@@ -254,7 +254,54 @@ public class studentJDBCTemplate  {
 		return allrecordstud;
     }
   
-  
+	
+	
+	
+	
+public ArrayList getlast5recordsforstudent() throws SQLException
+	
+{
+ ResultSet rs=null;
+ PreparedStatement ps = null;	
+ArrayList<String> last5=new ArrayList();
+ArrayList<String> lastname=new ArrayList();
+ArrayList<Integer> lastid=new ArrayList<Integer>();
+ArrayList<String> lastidcon=new ArrayList<String>();
+
+ArrayList<String> lastexamdate=new ArrayList();
+ArrayList<String> lastfees=new ArrayList();
+
+String querylast5 = "SELECT * FROM student jk WHERE jk.studentid ORDER BY jk.studentid DESC limit 5";	
+try 
+{
+	
+ps= studentJDBCTemplate.DB().prepareStatement(querylast5);
+rs=ps.executeQuery();
+while (rs.next())
+ {
+	
+	lastid.add(rs.getInt(1));
+	lastname.add(rs.getString(2));
+	lastexamdate.add(rs.getString(15));
+	lastfees.add(rs.getString(17));
+ }
+
+lastidcon.add(String.valueOf(lastid));
+ 
+//last5.addAll(lastidcon);
+last5.addAll(lastname);
+last5.addAll(lastexamdate);
+last5.addAll(lastfees);
+System.out.println("gneratelast5 array"+ last5.toString());
+
+}
+ 
+finally {
+	   rs.close();
+	   ps.close();
+  }
+	return last5;	
+   
 }
   
-
+}

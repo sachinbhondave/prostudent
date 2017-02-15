@@ -1,6 +1,8 @@
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import student.studentvo;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,12 +68,23 @@ public class Csavestudent extends HttpServlet {
  		
 		try {
 			save.studentsave(stud);
+	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		response.sendRedirect("http://localhost:7767/student/about.jsp");
+		ArrayList last5student = null;
+		try {
+			last5student = save.getlast5recordsforstudent();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("printlast5"+last5student.toString());
+ 
+		/*request.setAttribute("servletName", last5student); //categorylist is an arraylist      contains object of class category  
+		getServletConfig().getServletContext().getRequestDispatcher("/printregistration.jsp").forward(request,response);*/
+		response.sendRedirect("http://localhost:7767/student/printregistration.jsp");
 	}
 
 }
