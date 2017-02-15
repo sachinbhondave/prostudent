@@ -1,5 +1,7 @@
 package student;
 import java.util.List;
+import java.util.Properties;
+
 import javax.sql.DataSource;
 import java.sql.*;
 
@@ -26,11 +28,11 @@ public class studentJDBCTemplate  {
 
 	static Connection DB() throws SQLException {
 		  String DB_URL = "jdbc:mysql://localhost:3306/student";
-
-			   //  Database credentials
-		 String USER = "root";
-		 String PASS = "sachin";
-		
+		  Properties properties = new Properties();
+		  properties.setProperty("user", "root");
+		  properties.setProperty("password", "sachin");
+		  properties.setProperty("useSSL", "false");
+		  properties.setProperty("autoReconnect", "true");		
 		  try {
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e1) {
@@ -40,7 +42,7 @@ public class studentJDBCTemplate  {
 			}
 		 Connection conn = null;
 
-		 return  conn = DriverManager.getConnection(DB_URL,USER,PASS);
+		 return  conn = DriverManager.getConnection(DB_URL,properties);
   
 	}
 	 
@@ -50,25 +52,33 @@ public class studentJDBCTemplate  {
   public void studentsave(studentvo student) throws SQLException
   {     PreparedStatement ps = null;
  	    System.out.println("Connecting to database...");
-  		String query = "insert into student (name,father_name,post_add,per_add,sex,city,course,distirct,state,pincode,email,birth,contact) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  		String query = "insert into student (studentid,name,father_name,post_add,per_add,sex,city,course,distirct,state,pincode,email,birth,contact,examdate,examendate,reg_fees)"
+  				+ " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  		
   		try{
- 			ps =  studentJDBCTemplate.DB().prepareStatement(query);
+  			ps =  studentJDBCTemplate.DB().prepareStatement(query);
  			System.out.println("reg_name"+student.getName());
- 			ps.setString(1, student.getName());
- 			ps.setString(2, student.getFathername());
-			ps.setString(3, student.getPostadd());
-			ps.setString(4, student.getPeradd());
- 			ps.setString(5, student.getSex());
-			ps.setString(6, student.getCity());
-			ps.setString(7, student.getCourse());
- 			ps.setString(8, student.getDistrict());
-			ps.setString(9, student.getState());
-			ps.setString(10, student.getPincode());
- 			ps.setString(11, student.getEmail());
-			ps.setString(12, student.getBirth());
-			ps.setString(13, student.getContact());
- 			int out = ps.executeUpdate();
- 			System.out.println("reg_name"+out);
+ 			ps.setInt(1, 0);
+  			ps.setString(2, student.getName());
+ 			ps.setString(3, student.getFathername());
+			ps.setString(4, student.getPostadd());
+			ps.setString(5, student.getPeradd());
+ 			ps.setString(6, student.getSex());
+			ps.setString(7, student.getCity());
+			ps.setString(8, student.getCourse());
+ 			ps.setString(9, student.getDistrict());
+			ps.setString(10, student.getState());
+			ps.setString(11, student.getPincode());
+ 			ps.setString(12, student.getEmail());
+			ps.setString(13, student.getBirth());
+			ps.setString(14, student.getContact());
+			ps.setString(15, student.getChoice());
+ 			System.out.println("reg_name"+student.getChoice());
+ 			ps.setString(16, "sachin");
+			ps.setString(17, student.getRegfee());
+ 			System.out.println("reg_name"+student.getRegfee());
+   			int out = ps.executeUpdate();
+ 			System.out.println("reg_namedasdasd"+out);
 
 			if(out!=0){
 				System.out.println("Employee saved with id");
@@ -193,13 +203,13 @@ public class studentJDBCTemplate  {
 	     ArrayList<String> allrecordstud=new ArrayList();
         try {
         	
-		 String query123 = "select * from student st ,admission ad where ad.name =? and ad.name=st.name";
+		 String query123 = "select * from student st ,admission ad where ad.name =? and ad.name=st.name ";
 		 ps= studentJDBCTemplate.DB().prepareStatement(query123);
 	     ps.setString(1, name);
 		 rs=ps.executeQuery();
 		 while (rs.next())
  	     {
-	           for (int i=1 ; i<19 ; i++) 
+	           for (int i=1 ; i<24 ; i++) 
 	           {
 	    	   System.out.println("arraylistof allrecords"); 
 		       allrecordstud.add(rs.getNString(i));
