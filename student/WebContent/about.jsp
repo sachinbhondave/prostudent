@@ -146,7 +146,6 @@ id="personaladdress" size="30"></td>
 </tr>
 
 <%
-System.out.println("value of dropdown::"+ request.getParameter("STD"));
 ArrayList al = new ArrayList();
 String reg_fee="";
 Properties properties = new Properties();
