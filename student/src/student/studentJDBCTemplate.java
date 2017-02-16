@@ -255,6 +255,65 @@ public class studentJDBCTemplate  {
     }
   
 	
+	public ArrayList getallrecordofstudentforregistration
+	(String id) throws SQLException
+	   
+    {    ResultSet rs=null;
+	     PreparedStatement ps = null;	
+	     ArrayList<String> allrecordstud=new ArrayList();
+        try {
+        	
+		 String query123 = "select * from student st where  st.studentid = ?";
+		 ps= studentJDBCTemplate.DB().prepareStatement(query123);
+		 
+		 int studreg=Integer.valueOf(id);
+	     ps.setInt(1, studreg);
+	     
+		 rs=ps.executeQuery();
+		 while (rs.next())
+ 	     {
+			  
+			  
+		int studentid=rs.getInt(1);
+ 	    System.out.println("arraylistof studentid"+studentid); 
+
+		String studentid_new=String.valueOf(studentid);
+		allrecordstud.add(studentid_new);
+			 
+	           for (int i=2 ; i<18 ; i++) 
+	           {
+	    	   System.out.println("arraylistof allrecords"); 
+		       allrecordstud.add(rs.getString(i));
+	           }
+	          
+
+             }
+            
+		 
+		 if(allrecordstud.get(16).isEmpty())
+             {
+ 
+			  allrecordstud.add(16, "0");
+			  System.out.println("arraylistof allrecordstud");
+
+             }
+             
+             
+             
+		  System.out.println("arraylistof allrecords"+allrecordstud);
+ 			 
+			 allrecordstud.remove(15);
+ 
+ 	     }
+ 	     finally {
+ 		   rs.close();
+ 		   ps.close();
+  	   }
+		return allrecordstud;
+    }
+  
+	
+	
 	
 	
 	

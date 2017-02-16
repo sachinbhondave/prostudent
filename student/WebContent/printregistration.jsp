@@ -33,6 +33,8 @@
       <li><a href="studentsearch.jsp">student search & invoice</a></li>
     </ul>
   </div>
+ 
+ <form action="Cstudentregistrationdetails" method=Post name="Studentreg">
   
   <div id="content" bgcolor="#E6E6FA">
     <div >
@@ -190,7 +192,7 @@ con.close();
   </div>
  
  
-  
+  </form>
  
  
   <div id="footer">
