@@ -26,50 +26,50 @@ import com.sun.javafx.font.FontFactory;
 
 public class PdfGenerator {
 	
-	public static void main(String[] args) {
-		ArrayList<String> list=new ArrayList<String>();
-//		list.add(null);
-		list.add("25");
-		list.add("Faizan");
-		list.add("Mirza");
-		list.add("Pune");
-		list.add("Kanpur");
-		list.add("Male");
-		list.add("Kanpur");
-		list.add("BTECH");
-		list.add("Pune");
-		list.add("Maharashtra");
-		list.add("411057");
-		list.add("faizan.mirza@gmail.tom");
-		list.add("02-01-1994");
-		list.add("9999999999");
-		list.add("02-01-1993");
-		list.add("08-01-1993");
-		list.add("5500");
-//		System.out.println(list.get(0));
-		PdfGenerator p=new PdfGenerator();
-		p.generateInvoice(list);
-		/*
-		 * id   0
-		 * first name 1
-		 * family name 2
-		 * postal addr 3
-		 * perm add 4
-		 * sex 5
-		 * city 6
-		 * course 7
-		 * district 8
-		 * state 9
-		 * pin code 10
-		 * email 11
-		 * dob 12
-		 * contact 13
-		 * exam date 14
-		 * exam end date 15
-		 * reg fee 16w
-		 */
-		
-	}
+//	public static void main(String[] args) {
+//		ArrayList<String> list=new ArrayList<String>();
+////		list.add(null);
+//		list.add("25");
+//		list.add("Faizan");
+//		list.add("Mirza");
+//		list.add("Pune");
+//		list.add("Kanpur");
+//		list.add("Male");
+//		list.add("Kanpur");
+//		list.add("BTECH");
+//		list.add("Pune");
+//		list.add("Maharashtra");
+//		list.add("411057");
+//		list.add("faizan.mirza@gmail.tom");
+//		list.add("02-01-1994");
+//		list.add("9999999999");
+//		list.add("02-01-1993");
+//		list.add("08-01-1993");
+//		list.add("5500");
+////		System.out.println(list.get(0));
+//		PdfGenerator p=new PdfGenerator();
+//		p.generateInvoice(list);
+//		/*
+//		 * id   0
+//		 * first name 1
+//		 * family name 2
+//		 * postal addr 3
+//		 * perm add 4
+//		 * sex 5
+//		 * city 6
+//		 * course 7
+//		 * district 8
+//		 * state 9
+//		 * pin code 10
+//		 * email 11
+//		 * dob 12
+//		 * contact 13
+//		 * exam date 14
+//		 * exam end date 15
+//		 * reg fee 16w
+//		 */
+//		
+//	}
 	
 	
 	
