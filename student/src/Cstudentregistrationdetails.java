@@ -33,7 +33,7 @@ public class Cstudentregistrationdetails extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ArrayList studentreg = null;
+		ArrayList<String> studentreg = null;
 		try {
 			
 			
@@ -41,6 +41,8 @@ public class Cstudentregistrationdetails extends HttpServlet {
 			
 			studentreg = save.getallrecordofstudentforregistration(request.getParameter("studentid"));
 			System.out.println("getallrecordofstudentforregistration"+studentreg.toString());
+			PdfGenerator genPdf=new PdfGenerator();
+			genPdf.generateInvoice(studentreg);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
