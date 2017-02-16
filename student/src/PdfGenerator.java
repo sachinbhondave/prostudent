@@ -73,7 +73,7 @@ public class PdfGenerator {
 	
 	
 	
-	private void generateInvoice(ArrayList<String> list){
+	public void generateInvoice(ArrayList<String> list){
 	try{
 		if(list.size()<17){
 			throw new Exception("Not all values for Student available");
