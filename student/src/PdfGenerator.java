@@ -16,6 +16,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.DottedLine;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.LineSeparator;
@@ -80,143 +81,75 @@ public class PdfGenerator {
 			if(list.size()<17){
 				throw new Exception("Not all values for Student available");
 			}
-			Calendar c=Calendar.getInstance();
-			SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
-			String billingDate=f.format(c.getTime());
-//			System.out.println("Date is "+ billingDate);
-//			list.add("Id1");
-//			list.add("Faizan");
-//			list.add("Mirza");
-//			list.add("StandardX");
-//			list.add("Total fee paid");
-//			list.add("remaining fee");
-//			list.add("Fine");
-			PdfFont font = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
-			PdfFont yellowFont = PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
-			Text schoolName = new Text("CREED SCHOOL").setFontColor(Color.RED).setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD));
+			
 			PdfWriter writer = new PdfWriter(list.get(0)+" Bill.pdf");
 			PdfDocument pdfDoc=new PdfDocument(writer);
 			Document doc=new Document(pdfDoc);
-			Paragraph p = new Paragraph(schoolName);
-//			LineSeparator ls=new LineSeparator();
-			
+			Image schoolLogo = new Image(ImageDataFactory.create("images/Logo.jpg")).scaleToFit(220f, 220f);
+			Image officeStamp = new Image(ImageDataFactory.create("images/sign.PNG"));
+			Paragraph p = new Paragraph().add(schoolLogo);
 			doc.add(p);
-			p = new Paragraph("......................................................................................................................");
+			p= new Paragraph("Office Copy for Register");
 			doc.add(p);
-			doc.add(new Paragraph("\n\n"));
-//			List l=new List().setSymbolIndent(12).setListSymbol("\u2022").setFont(font);
-//			l.add(new ListItem("Student Id		   :				"+list.get(0)));
-//			l.add(new ListItem("Name			   :				"+list.get(1)+" "+list.get(2)));
-//			l.add(new ListItem("Postal Address     :				"+list.get(3)));
-//			l.add(new ListItem("Permanent Address  :				"+list.get(4)+", "+list.get(6)+", "+list.get(8)+", "+list.get(9)+"-"+list.get(10)));
-//			l.add(new ListItem("Sex				   :				"+list.get(5)));
-//			l.add(new ListItem("Course			   :				"+list.get(7)));
-//			l.add(new ListItem("Email			   :				"+list.get(11)));
-//			l.add(new ListItem("Date Of Birth	   :				"+list.get(12)));
-//			l.add(new ListItem("Contact			   :				"+list.get(13)));
-//			l.add(new ListItem("Exam date		   :				"+list.get(14)));
-//			l.add(new ListItem("Exam End date	   :				"+list.get(15)));
-//			l.add(new ListItem("Registration Fee   :				"+list.get(16)));
-//			l.add(new ListItem("Billing Date       :                "+billingDate));
-//			doc.add(l);
-			Table table=new Table(3);
-			
-			Cell col1=new Cell(1,1).add("Student Id");
+			Table details=new Table(4);
+			Cell col1=new Cell(1,2).add("Registration Number");
 			Cell col2= new Cell(1,2).add(list.get(0));
-			table.addCell(col1);
-			table.addCell(col2);
+			details.addCell(col1);
+			details.addCell(col2);
+			col1=new Cell(1,2).add("Full Name");
+			col2= new Cell(1,2).add(list.get(1)+" "+list.get(2));
+			details.addCell(col1);
+			details.addCell(col2);
 			
-			col1=new Cell(1,1).add("Name");
-			col2= new Cell(1,2).add(list.get(1));
-			table.addCell(col1);
-			table.addCell(col2);
-			
-			col1=new Cell(1,1).add("Postal Address");
-			col2= new Cell(1,2).add(list.get(3));
-			table.addCell(col1);
-			table.addCell(col2);
-			
-			col1=new Cell(1,1).add("Permanent Address");
+			col1=new Cell(1,2).add("Postal Address");
 			col2= new Cell(1,2).add(list.get(4)+", "+list.get(6)+", "+list.get(8)+", "+list.get(9)+"-"+list.get(10));
-			table.addCell(col1);
-			table.addCell(col2);
+			details.addCell(col1);
+			details.addCell(col2);
 			
-			col1=new Cell(1,1).add("Sex");
+			col1=new Cell(1,2).add("Sex");
 			col2= new Cell(1,2).add(list.get(5));
-			table.addCell(col1);
-			table.addCell(col2);
+			details.addCell(col1);
+			details.addCell(col2);
 			
-			col1=new Cell(1,1).add("Course");
+			col1=new Cell(1,2).add("Class Applied for");
 			col2= new Cell(1,2).add(list.get(7));
-			table.addCell(col1);
-			table.addCell(col2);
+			details.addCell(col1);
+			details.addCell(col2);
 			
-			col1=new Cell(1,1).add("Email");
-			col2= new Cell(1,2).add(list.get(11));
-			table.addCell(col1);
-			table.addCell(col2);
-			
-			col1=new Cell(1,1).add("Date of Birth");
-			col2= new Cell(1,2).add(list.get(12));
-			table.addCell(col1);
-			table.addCell(col2);
-			
-			col1=new Cell(1,1).add("Contact");
-			col2= new Cell(1,2).add(list.get(13));
-			table.addCell(col1);
-			table.addCell(col2);
-			
-			col1=new Cell(1,1).add("Exam Date");
+			col1=new Cell(1,2).add("Exam slot(Date & Time)");
 			col2= new Cell(1,2).add(list.get(14));
-			table.addCell(col1);
-			table.addCell(col2);
+			details.addCell(col1);
+			details.addCell(col2);
 			
-			col1=new Cell(1,1).add("Exam End Date");
-			col2= new Cell(1,2).add(list.get(15));
-			table.addCell(col1);
-			table.addCell(col2);
-			
-			col1=new Cell(1,1).add("Registration Fee");
+			col1=new Cell(1,2).add("Registration Fee");
 			col2= new Cell(1,2).add(list.get(16));
-			table.addCell(col1);
-			table.addCell(col2);
+			details.addCell(col1);
+			details.addCell(col2);
 			
-			col1=new Cell(1,1).add("Billing Date");
+			Calendar c=Calendar.getInstance();
+			SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+			String billingDate=f.format(c.getTime());
+			
+			col1=new Cell(1,2).add("Registration Date");
 			col2= new Cell(1,2).add(billingDate);
-			table.addCell(col1);
-			table.addCell(col2);
-			
-			doc.add(table);
-			
-			p=new Paragraph("\n\n\n");
+			details.addCell(col1);
+			details.addCell(col2);
+			doc.add(details);
+			Table disclaimer = new Table(4);
+			col1=new Cell(1,2).add("<Disclaimer Text>").setBorder(Border.NO_BORDER);
+			col2=new Cell(1, 2).add(officeStamp).setBorder(Border.NO_BORDER);
+			disclaimer.addCell(col1);
+			disclaimer.addCell(col2);
+			doc.add(disclaimer);
+			LineSeparator ls = new LineSeparator(new DottedLine());
+			doc.add(ls);
+			p= new Paragraph().add(schoolLogo);
 			doc.add(p);
-			Image sign = new Image(ImageDataFactory.create("sign.PNG"));
-//			p = new Paragraph().add(sign);
-//			
-//			
-////			doc.add(new Paragraph("Billing Invoice:"));
-////			List list1=new List().setSymbolIndent(12).setListSymbol("\u2022").setFont(font);
-////			list1.add(new ListItem("Student Id:  "+list.get(0)));
-////			list1.add(new ListItem("Name:        "+list.get(1)));
-////			doc.add(list1);
-//			doc.add(p);
-			
-			
-//			
-//			Table t=new Table(3);
-//			Cell col1=new Cell(1,1).add("Student Idjasdkhasbduadvbsjdvufvbahbfuiadbfkjabdsbfiahbdfuadfjibafuybsiudfbhadbfisandbfiusbi");
-//			Cell col2=new Cell(1,2).add(list.get(0));
-//			t.addCell(col1);
-//			t.addCell(col2);
-//			t.addCell(col1);
-//			t.addCell(col2);
-//			col1=new Cell(1,1).add("Name");
-//			col2=new Cell(1,2).add(list.get(1));
-//			doc.add(t);
-			p=new Paragraph().add(sign);
+			p = new Paragraph("Student copy handover");
 			doc.add(p);
+			doc.add(details);
+			doc.add(disclaimer);
 			doc.close();
-			System.out.println("List values are:: "+list.toString());
 		}
 		catch(FileNotFoundException fe){
 			fe.printStackTrace();
