@@ -32,7 +32,7 @@ public class SendMail {
         String message = "I have some attachments for you.";
 	
         String attachFiles = new String();
-        attachFiles = "D:\\Test.pdf";
+        attachFiles = "D:\\Bill.pdf";
         System.out.println("file"+attachFiles.toString());
         try {
             sendEmailWithAttachments(host, port, mailFrom, password, mailTo,

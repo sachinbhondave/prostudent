@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 <script type="text/javascript" src="validate.js"></script>
-<%@ page import="student.studentJDBCTemplate" %>
+<%@ page import="student.studentJDBCTemplate " %>
 <%@ page import= "javax.sql.DataSource" %>
 <%@ page import= "java.sql.*" %>
 <%@ page import= "java.util.*" %>

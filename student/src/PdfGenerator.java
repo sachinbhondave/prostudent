@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import javax.annotation.Generated;
 
 import com.itextpdf.io.font.FontConstants;
@@ -25,20 +24,19 @@ import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
-import com.sun.javafx.font.FontFactory;
 
 public class PdfGenerator {
 	public void generateInvoice(ArrayList<String> list){
 		try{
-			if(list.size()<17){
+			if(list.size() < 16){
 				throw new Exception("Not all values for Student available");
 			}
 			
-			PdfWriter writer = new PdfWriter(list.get(0)+" Bill.pdf");
+			PdfWriter writer = new PdfWriter("D:\\Bill.pdf");
 			PdfDocument pdfDoc=new PdfDocument(writer);
 			Document doc=new Document(pdfDoc);
-			Image schoolLogo = new Image(ImageDataFactory.create("images/Logo.jpg")).scaleToFit(220f, 220f);
-			Image officeStamp = new Image(ImageDataFactory.create("images/sign.PNG"));
+			Image schoolLogo = new Image(ImageDataFactory.create("C:\\Users\\shree\\git\\prostudent\\student\\src\\images\\Logo.jpg")).scaleToFit(220f, 220f);
+			Image officeStamp = new Image(ImageDataFactory.create("C:\\Users\\shree\\git\\prostudent\\student\\src\\images\\sign.PNG"));
 			Paragraph p = new Paragraph().add(schoolLogo);
 			doc.add(p);
 			p= new Paragraph("Office Copy for Register");
@@ -74,7 +72,7 @@ public class PdfGenerator {
 			details.addCell(col2);
 			
 			col1=new Cell(1,2).add("Registration Fee");
-			col2= new Cell(1,2).add(list.get(16));
+			col2= new Cell(1,2).add(list.get(15));
 			details.addCell(col1);
 			details.addCell(col2);
 			
@@ -88,7 +86,9 @@ public class PdfGenerator {
 			details.addCell(col2);
 			doc.add(details);
 			Table disclaimer = new Table(4);
-			col1=new Cell(1,2).add("<Disclaimer Text>").setBorder(Border.NO_BORDER);
+			col1=new Cell(1,2).add("Disclaimer : Should be configurable and school mgmt. can write any message they\r\n" + 
+					" want ,this is an example. This is and example contact no 12234449994 , \r\n" + 
+					"www.xmxll.com <http://www.xmxll.com>, refer to school website").setBorder(Border.NO_BORDER);
 			col2=new Cell(1, 2).add(officeStamp).setBorder(Border.NO_BORDER);
 			disclaimer.addCell(col1);
 			disclaimer.addCell(col2);
