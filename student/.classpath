@@ -17,5 +17,38 @@
 	<classpathentry kind="lib" path="C:/Users/shree/Downloads/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/shree/Downloads/spring-core-4.0.0.RELEASE-sources (1).jar"/>
 	<classpathentry kind="lib" path="C:/Users/shree/Downloads/org.springframework.context_3.1.4.release.jar/org.springframework.context_3.1.4.release.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-barcodes-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-barcodes-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-barcodes-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-font-asian-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-font-asian-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-forms-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-forms-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-forms-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-hyph-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-hyph-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-io-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-io-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-io-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-itext7-root-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-itext-rups-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-itext-rups-7.0.1-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-itext-rups-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-itext-rups-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-kernel-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-kernel-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-kernel-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-layout-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-layout-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-layout-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-pdfa-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-pdfa-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-pdfa-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-pdftest-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-pdftest-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-pdftest-7.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-sign-7.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-sign-7.0.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/faiza/Downloads/Compressed/itext7-7.0.1/itext7-sign-7.0.1-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
