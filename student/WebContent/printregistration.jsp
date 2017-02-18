@@ -29,7 +29,6 @@
       <li><a href="training-courses.jsp">Training Courses</a></li>
       <li><a href="blog.jsp">Student billing</a></li>
       <li><a href="school-calendar.jsp">School Calendar</a></li>
-      <li><a href="contact-us.jsp">Contact us</a></li>
       <li><a href="studentsearch.jsp">student search & invoice</a></li>
     </ul>
   </div>
