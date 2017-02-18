@@ -27,7 +27,7 @@ public class SendMail {
         String password = "sachin@321";
  
         // message info
-        String mailTo = "sachin_bhohdave@infosys.com";
+        String mailTo = mail;
         String subject = "New email with attachments";
         String message = "I have some attachments for you.";
 	
