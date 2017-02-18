@@ -94,10 +94,12 @@ id="personaladdress" size="30"></td>
 <td>Course</td>
 <td><select name="Course">
 <option value="-1" selected>select..</option>
-<option value="B.Tech">B.TECH</option>
-<option value="MCA">MCA</option>
-<option value="MBA">MBA</option>
-<option value="BCA">BCA</option>
+<option value="KG">KG</option>
+<option value="LKG">LKG</option>
+<option value="1">STD-ONE</option>
+<option value="2">STD-TWO</option>
+<option value="3">STD-THIRD</option>
+<option value="4">STD-FOUR</option>
 </select></td>
 </tr>
 
