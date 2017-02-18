@@ -266,6 +266,9 @@ con.close();
           <li><a href="admissions.jsp">Admissions</a></li>
           <li><a href="training-courses.jsp">Training Courses</a></li>
           <li><a href="career.jsp">Career</a></li>
+             <li class="last"><a href="contact-us.jsp">Contact us</a></li>
+                   <li><a href="printregistration.jsp">print_registration_student</a></li>
+             
           <li class="last"><a href="contact-us.jsp">Contact us</a></li>
         </ul>
       </div>
