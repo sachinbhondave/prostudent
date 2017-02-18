@@ -43,7 +43,10 @@ public class Cstudentregistrationdetails extends HttpServlet {
 			System.out.println("getallrecordofstudentforregistration"+studentreg.toString());
 			PdfGenerator genPdf=new PdfGenerator();
 			genPdf.generateInvoice(studentreg);
-
+			SendMail SendMail=new SendMail();
+            System.out.println("studentregemail"+studentreg.get(11));
+			SendMail.sendmailforstudent(studentreg.get(11));
+ 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
