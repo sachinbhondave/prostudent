@@ -25,6 +25,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
 
+
 public class PdfGenerator {
 	public void generateInvoice(ArrayList<String> list){
 		try{
@@ -88,7 +89,12 @@ public class PdfGenerator {
 			Table disclaimer = new Table(4);
 			col1=new Cell(1,2).add("Disclaimer : Should be configurable and school mgmt. can write any message they\r\n" + 
 					" want ,this is an example. This is and example contact no 12234449994 , \r\n" + 
-					"www.xmxll.com <http://www.xmxll.com>, refer to school website").setBorder(Border.NO_BORDER);
+					"www.xmxll.com <http://www.xmxll.com>, refer to school website  ").setBorder(Border.NO_BORDER);
+		  for (int i=0; i<40; i++)
+           {
+			doc.add( new Paragraph( "" ) );
+			
+           }
 			col2=new Cell(1, 2).add(officeStamp).setBorder(Border.NO_BORDER);
 			disclaimer.addCell(col1);
 			disclaimer.addCell(col2);
@@ -100,7 +106,13 @@ public class PdfGenerator {
 			p = new Paragraph("Student copy handover");
 			doc.add(p);
 			doc.add(details);
+			 for (int i=0; i<40; i++)
+	           {
+				doc.add( new Paragraph( "" ) );
+				
+	           }
 			doc.add(disclaimer);
+			 
 			doc.close();
 		}
 		catch(FileNotFoundException fe){
