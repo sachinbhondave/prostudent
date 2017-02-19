@@ -124,6 +124,34 @@ public class studentJDBCTemplate  {
 	  
   }
   
+  
+  public int Deletestudentrecord(String id) throws SQLException
+  {    PreparedStatement ps = null;
+
+		String query = "delete  from student st where  st.studentid = ?";
+ 	try
+		{
+		ps = studentJDBCTemplate.DB().prepareStatement(query);
+	   
+		int newstud=Integer.valueOf(id);
+ 		ps.setInt(1,newstud);
+	   
+	    int out = ps.executeUpdate();
+	    if(out !=0){
+			System.out.println("Employee admission saved ");
+		}else 
+			{System.out.println("Employee save failed ");
+			}
+	    return out;
+
+  }
+	    finally {
+			   ps.close();
+	 	   }
+		  
+   }
+  
+  
   public void saveadmissiondetails(admissionvo admission) throws SQLException
   {    PreparedStatement ps = null;
 

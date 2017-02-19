@@ -127,25 +127,7 @@ id="personaladdress" size="30"></td>
 </tr>
 <tr>
 
-<tr>
-<td>Student-STD</td>
-<td><select Name="STD" id="STD"  onchange="jsFunction(this.value);">>
-<option value="1" selected>select..</option>
-<option value="1">KG</option>
-<option value="1">LKG</option>
-<option value="2">STD1</option>
-<option value="2">STD2</option>
-<option value="2">STD3</option>
-<option value="2">STD4</option>
-<option value="3">STD5</option>
-<option value="3">STD6</option>
-<option value="3">STD7</option>
-<option value="3">STD8</option>
-<option value="3">STD9</option>
-<option value="3">STD10</option>
- 
-</select></td>
-</tr>
+
 
 <%
 ArrayList al = new ArrayList();

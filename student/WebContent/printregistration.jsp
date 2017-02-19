@@ -93,9 +93,7 @@ con.close();
 %>
 
 
-
-    
-    
+ <a href="checkpdf.jsp" ><h4 style=" color:blue;" >CLICK:to check before generating pdf for student.</h4></a>
  <h4  style=" color:blue;" >Last student registerd with id : <%= option23232 %> </h4> 
     
 <table>   
@@ -104,12 +102,14 @@ con.close();
 <td><input type="text" name="studentid" id="studentid" size="15"></td>
 </tr>
 <tr>
-<%   studentvo  user = new studentvo(); %>
+<%  studentvo  user = new studentvo(); %>
 
 <td><B>PrintPDF</B></td>
 <td colspan="2"><input type="submit" value="GeneratePDF" /></td>
 </tr>
 </table>
+  
+  
     
 <br></br>
 <br></br>
