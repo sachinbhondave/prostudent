@@ -128,7 +128,8 @@ public class studentJDBCTemplate  {
   public int Deletestudentrecord(String id) throws SQLException
   {    PreparedStatement ps = null;
 
-		String query = "delete  from student st where  st.studentid = ?";
+		String query = "delete from student  where studentid= ? ";
+				
  	try
 		{
 		ps = studentJDBCTemplate.DB().prepareStatement(query);
