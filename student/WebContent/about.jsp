@@ -5,13 +5,14 @@
 <title>Aviation School | student Registration</title>
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
-<script type="text/javascript" src="validate.js"></script>
+
+
+
 <%@ page import="student.studentJDBCTemplate " %>
+<%@ page import="student.DBconnection " %>
 <%@ page import= "javax.sql.DataSource" %>
 <%@ page import= "java.sql.*" %>
 <%@ page import= "java.util.*" %>
-
-
 
 
 
@@ -130,32 +131,19 @@ id="personaladdress" size="30"></td>
 
 
 <%
+
+DBconnection hj=new DBconnection();
+Connection con= hj.DBcon();
+
+
 ArrayList al = new ArrayList();
 String reg_fee="";
-Properties properties = new Properties();
-properties.setProperty("user", "root");
-properties.setProperty("password", "sachin");
-properties.setProperty("useSSL", "false");
-properties.setProperty("autoReconnect", "true");
- 
-Connection connection = null;
+
+PreparedStatement st=null;
+PreparedStatement st1=null;
 Statement statement = null;
 ResultSet rs1 = null;
 ResultSet rs2 = null;
-
-  try
-  {
-Class.forName("com.mysql.jdbc.Driver"); 
-  }
-  catch(Exception e)
-  {
-	  e.fillInStackTrace();
-  }
-  
-java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/student",properties); 
-PreparedStatement st=null;
-PreparedStatement st1=null;
-
 String executeQuery="select examdate from student.exam "; 
 String executeQuery1="SELECT kl.onetime FROM student.charge kl where kl.name='registration' "; 
 
