@@ -43,8 +43,45 @@ public class studentJDBCTemplate  {
 	}
 	 
 
-	      
+	  public void studentrxamresultsave(String status , String pers  , int studid) throws SQLException
+	  { 
+		    PreparedStatement ps = null;
+		    String query =" insert into examresult (studentid,status,percentage) values (?,?,?)";
+  			ps =  studentJDBCTemplate.DB().prepareStatement(query);
+  			ps.setInt(1, studid);
+  			ps.setString(2, status);
+ 			ps.setString(3, pers);
+    		ps.executeUpdate();
+            System.out.println("success_examreuslt");
+	  }
 	
+	  
+	   public ArrayList getnameandstdforstudentid(int no) throws SQLException
+	   {
+		  ArrayList<String> nameandstd=new ArrayList<String>();
+ 		  
+		  if ((no > 0))
+				  {
+		  PreparedStatement ps=null;	
+		  ResultSet rsll = null;
+
+		    String executeQueryll="select name,course from student where studentid = ? "; 
+			ps =  studentJDBCTemplate.DB().prepareStatement(executeQueryll);
+			ps.setInt(1,no);
+			rsll=ps.executeQuery();
+
+
+		  while(rsll.next()) 
+		  { 
+			  nameandstd.add(rsll.getString(1));
+			  nameandstd.add(rsll.getString(2));
+ 		  }
+		  }
+		return nameandstd;
+		  
+	  }
+	  
+	  
   public void studentsave(studentvo student) throws SQLException
   {     PreparedStatement ps = null;
  	    System.out.println("Connecting to database...");

@@ -38,6 +38,7 @@
       <li><a href="school-calendar.jsp">School Calendar</a></li>
       <li><a href="contact-us.jsp">Contact us</a></li>
       <li><a href="studentsearch.jsp">student search & invoice</a></li>
+       <li><a href="admissionresult.jsp">enter examresult</a></li>    
     </ul>
   </div>
   <div id="content" bgcolor="#E6E6FA">
