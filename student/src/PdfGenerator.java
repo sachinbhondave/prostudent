@@ -1,4 +1,5 @@
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,43 +37,49 @@ public class PdfGenerator {
 			PdfWriter writer = new PdfWriter("D:\\Bill.pdf");
 			PdfDocument pdfDoc=new PdfDocument(writer);
 			Document doc=new Document(pdfDoc);
-			Image schoolLogo = new Image(ImageDataFactory.create("C:\\Users\\shree\\git\\prostudent\\student\\src\\images\\Logo.jpg")).scaleToFit(220f, 220f);
-			Image officeStamp = new Image(ImageDataFactory.create("C:\\Users\\shree\\git\\prostudent\\student\\src\\images\\sign.PNG"));
+//			String fi=new java.io.File("Logo.png").getAbsolutePath();
+//			System.out.println("Path"+fi);
+			Image schoolLogo = new Image(ImageDataFactory.create("images/Logo.jpg")).scaleToFit(200f, 200f);
+			Image officeStamp = new Image(ImageDataFactory.create("images/sign.PNG")).scaleToFit(80f, 80f);
 			Paragraph p = new Paragraph().add(schoolLogo);
 			doc.add(p);
-			p= new Paragraph("Office Copy for Register");
+			Text t=new Text("Disclaimer : Should be configurable and school mgmt. can write any message they\r\n" + 
+					" want ,this is an example. This is and example contact no 12234449994 , \r\n" + 
+					"www.xmxll.com <http://www.xmxll.com>, refer to school website  ").setFontSize(10f);
+			PdfFont font= PdfFontFactory.createFont(FontConstants.TIMES_BOLD);
+			p= new Paragraph("Office Copy for Register").setFont(font);
 			doc.add(p);
 			Table details=new Table(4);
-			Cell col1=new Cell(1,2).add("Registration Number");
+			Cell col1=new Cell(1,2).add("Registration Number").setFont(font);
 			Cell col2= new Cell(1,2).add(list.get(0));
 			details.addCell(col1);
 			details.addCell(col2);
-			col1=new Cell(1,2).add("Full Name");
-			col2= new Cell(1,2).add(list.get(1)+" "+list.get(2));
+			col1=new Cell(1,2).add("Full Name").setFont(font);
+			col2= new Cell(1,2).add(list.get(1));
 			details.addCell(col1);
 			details.addCell(col2);
 			
-			col1=new Cell(1,2).add("Postal Address");
+			col1=new Cell(1,2).add("Postal Address").setFont(font);
 			col2= new Cell(1,2).add(list.get(4)+", "+list.get(6)+", "+list.get(8)+", "+list.get(9)+"-"+list.get(10));
 			details.addCell(col1);
 			details.addCell(col2);
 			
-			col1=new Cell(1,2).add("Sex");
+			col1=new Cell(1,2).add("Sex").setFont(font);
 			col2= new Cell(1,2).add(list.get(5));
 			details.addCell(col1);
 			details.addCell(col2);
 			
-			col1=new Cell(1,2).add("Class Applied for");
+			col1=new Cell(1,2).add("Class Applied for").setFont(font);
 			col2= new Cell(1,2).add(list.get(7));
 			details.addCell(col1);
 			details.addCell(col2);
 			
-			col1=new Cell(1,2).add("Exam slot(Date & Time)");
+			col1=new Cell(1,2).add("Exam slot(Date & Time)").setFont(font);
 			col2= new Cell(1,2).add(list.get(14));
 			details.addCell(col1);
 			details.addCell(col2);
 			
-			col1=new Cell(1,2).add("Registration Fee");
+			col1=new Cell(1,2).add("Registration Fee").setFont(font);
 			col2= new Cell(1,2).add(list.get(15));
 			details.addCell(col1);
 			details.addCell(col2);
@@ -81,21 +88,15 @@ public class PdfGenerator {
 			SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy");
 			String billingDate=f.format(c.getTime());
 			
-			col1=new Cell(1,2).add("Registration Date");
+			col1=new Cell(1,2).add("Registration Date").setFont(font);
 			col2= new Cell(1,2).add(billingDate);
 			details.addCell(col1);
 			details.addCell(col2);
 			doc.add(details);
 			Table disclaimer = new Table(4);
-			col1=new Cell(1,2).add("Disclaimer : Should be configurable and school mgmt. can write any message they\r\n" + 
-					" want ,this is an example. This is and example contact no 12234449994 , \r\n" + 
-					"www.xmxll.com <http://www.xmxll.com>, refer to school website  ").setBorder(Border.NO_BORDER);
-		  for (int i=0; i<40; i++)
-           {
-			doc.add( new Paragraph( "" ) );
-			
-           }
-			col2=new Cell(1, 2).add(officeStamp).setBorder(Border.NO_BORDER);
+			p=new Paragraph(t);
+			col1=new Cell(1,3).add(p).setBorder(Border.NO_BORDER);
+			col2=new Cell(1, 1).add(officeStamp).setBorder(Border.NO_BORDER);
 			disclaimer.addCell(col1);
 			disclaimer.addCell(col2);
 			doc.add(disclaimer);
@@ -103,16 +104,10 @@ public class PdfGenerator {
 			doc.add(ls);
 			p= new Paragraph().add(schoolLogo);
 			doc.add(p);
-			p = new Paragraph("Student copy handover");
+			p = new Paragraph("Student copy handover").setFont(font);
 			doc.add(p);
 			doc.add(details);
-			 for (int i=0; i<40; i++)
-	           {
-				doc.add( new Paragraph( "" ) );
-				
-	           }
 			doc.add(disclaimer);
-			 
 			doc.close();
 		}
 		catch(FileNotFoundException fe){
