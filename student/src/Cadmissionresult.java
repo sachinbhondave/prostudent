@@ -43,7 +43,7 @@ public class Cadmissionresult extends HttpServlet {
 
 		{
 			studentJDBCTemplate save=new studentJDBCTemplate();
-			System.out.println("sachin_submitdata_choose_submitidone"+request.getParameter("result"));
+			System.out.println("sachin_submitdata_vcxvchoose_submitidone"+request.getParameter("result"));
 
 	    String status=request.getParameter("result");
 	    String per=request.getParameter("marks");

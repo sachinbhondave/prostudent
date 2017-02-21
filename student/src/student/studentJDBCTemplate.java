@@ -52,7 +52,7 @@ public class studentJDBCTemplate  {
   			ps.setString(2, status);
  			ps.setString(3, pers);
     		ps.executeUpdate();
-            System.out.println("success_examreuslt");
+            System.out.println("succesfdfs_examreuslt");
 	  }
 	
 	  
