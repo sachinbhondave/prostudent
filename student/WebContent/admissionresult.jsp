@@ -77,6 +77,8 @@ while(rs.next())
 
 
 ArrayList all = new ArrayList();
+
+
 PreparedStatement stl=null;	
 ResultSet rsl = null;
 String one=(String) request.getAttribute("choose");
@@ -85,7 +87,6 @@ String executeQueryl="select studentid  from student.student where examdate = ? 
 stl= con.prepareStatement(executeQueryl);  
 stl.setString(1, one);
 rsl=stl.executeQuery();
-
 
 while(rsl.next()) 
 { 
@@ -113,6 +114,8 @@ if (!(request.getAttribute("studeetname")==null))
 <tr>
 <td> EntranceExam-Date</td>
  <td><select Name=choose id=choose  onchange="submitform(this.value);">
+  <option value="select">select
+   </option>
    <%  for(int i = 0; i < al.size(); i++) {
            String option = (String)al.get(i);
    %>
@@ -129,7 +132,8 @@ if (!(request.getAttribute("studeetname")==null))
    <%  for(int i = 0; i < all.size(); i++) {
 	   
 	   Integer option1 = (Integer)all.get(i);
-   %>   
+   %>  <option>---
+   </option> 
     <option value="<%= option1 %>"><%= option1 %>
    </option>
    <% } 
