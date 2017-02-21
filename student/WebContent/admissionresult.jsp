@@ -148,7 +148,7 @@ if (!(request.getAttribute("studeetname")==null))
 <br><br>
 <form action="Cadmissionresult" method=get name="Studentdata" align="center" >
 
-<table  align="center" cellpadding="2">
+<table  align="center" cellpadding="3">
 <tr>
 
 
