@@ -83,7 +83,7 @@ PreparedStatement stl=null;
 ResultSet rsl = null;
 String one=(String) request.getAttribute("choose");
 
-String executeQueryl="select studentid  from student.student where examdate = ? "; 
+String executeQueryl="  select studentid  from student.student s  where  s.examdate = ? and s.studentid  not in (select studentid from examresult ) "; 
 stl= con.prepareStatement(executeQueryl);  
 stl.setString(1, one);
 rsl=stl.executeQuery();
