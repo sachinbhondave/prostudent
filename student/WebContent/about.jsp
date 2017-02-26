@@ -98,10 +98,19 @@ id="personaladdress" size="30"></td>
 <option value="-1" selected>select..</option>
 <option value="KG">KG</option>
 <option value="LKG">LKG</option>
-<option value="1">STD-ONE</option>
-<option value="2">STD-TWO</option>
-<option value="3">STD-THIRD</option>
-<option value="4">STD-FOUR</option>
+<option value="1">STD-I</option>
+<option value="2">STD-II</option>
+<option value="3">STD-III</option>
+<option value="4">STD-IV</option>
+<option value="5">STD-V</option>
+<option value="6">STD-VI</option>
+<option value="7">STD-VII</option>
+<option value="8">STD-VIII</option>
+<option value="9">STD-IX</option>
+<option value="10">STD-x</option>
+
+
+
 </select></td>
 </tr>
 
