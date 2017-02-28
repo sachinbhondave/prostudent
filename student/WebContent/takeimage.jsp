@@ -116,11 +116,11 @@
      
      <h4>Admiting student- <%=studentname  %> </h4>
     
-      <input type="text" name="Course" id="Course" value= <%= Course %>>
-      <input type="text" name="studentname"  id="studentname" value=<%= studentname %>>
-      <input type="text"  name="Coursepaidfee"  id="Coursepaidfee" value=<%= Coursepaidfee %>>
-      <input type="text"  name="Hobby" id="Hobby" value=<%= Hobby %>>
-      <input type="text"  name="field" id="field" value=""/>
+      <input type="hidden" name="Course" id="Course" value= <%= Course %>>
+      <input type="hidden" name="studentname"  id="studentname" value=<%= studentname %>>
+      <input type="hidden"  name="Coursepaidfee"  id="Coursepaidfee" value=<%= Coursepaidfee %>>
+      <input type="hidden"  name="Hobby" id="Hobby" value=<%= Hobby %>>
+      <input type="hidden"  name="field" id="field" value=""/>
        
       
       <input type="submit" name="submit" value="submit">
