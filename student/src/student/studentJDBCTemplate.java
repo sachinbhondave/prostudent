@@ -1,15 +1,22 @@
 package student;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.sql.DataSource;
-import java.sql.*;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
+import java.util.Date;
 
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
 //import java.sql.ResultSet;
 //import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -80,7 +87,94 @@ public class studentJDBCTemplate  {
 		return nameandstd;
 		  
 	  }
+	 
+	   
+	   
+	   
+	   
+	   
+	   
+	   public void savefinaladmission(ArrayList<String> sdata) throws SQLException
+	   {    Blob blobimage = null;
+		    int sid=0;
+		      
+		   System.out.println("sdata"+sdata.toString());
+		   
+		      String Course  =  sdata.get(0);
+		      String studentname  = sdata.get(1);
+		      String Coursepaidfee  = sdata.get(2);
+		      String Hobby  =  sdata.get(3);
+		      String Image  =  sdata.get(4);
+							
+			   System.out.println("sdaczxczxczxzcta"+sdata.toString());
+
+
+		   byte[] buff=Image.getBytes();
+		      try {
+			 blobimage=new SerialBlob(buff);
+			} catch (SerialException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 
+ 		  
+		
+		  PreparedStatement ps=null;	
+		  ResultSet rsll = null;
+
+		    String executeQueryll=" select st.studentid from student st , examresult ex where ex.studentid=st.studentid and st.name= ? "; 
+		    		
+			ps =  studentJDBCTemplate.DB().prepareStatement(executeQueryll);
+			ps.setString(1,studentname);
+			rsll=ps.executeQuery();
+     
+			while (rsll.next())   
+       {
+    	  sid=rsll.getInt("studentid");
+
+ 		 System.out.println("sid"+sid+studentname);
+
+		 
+		 }
+     
+       /*getting current date time using calendar class 
+        * An Alternative of above*/
+       
+       PreparedStatement pss=null;	
+		  ResultSet rslls = null;
+
+		    String executeQuerylls="insert into admissionsave(studentid, studentname,studentimage,hobby,admissiondate,std,fees) values (?,?,?,?,CURDATE(),?,?) "; 
+		    		
+			pss =  studentJDBCTemplate.DB().prepareStatement(executeQuerylls);
+			pss.setInt(1,sid);
+			pss.setString(2,studentname);
+			pss.setBlob(3,blobimage);
+			pss.setString(4,Hobby);
+			pss.setString(5,Course);
+			pss.setString(6,Coursepaidfee);
+
+			int out = pss.executeUpdate();
+ 			System.out.println("admissionsave"+out);
+
+			
+	   }
 	  
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 	  
   public void studentsave(studentvo student) throws SQLException
   {     PreparedStatement ps = null;
