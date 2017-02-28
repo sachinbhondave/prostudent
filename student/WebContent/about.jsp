@@ -188,6 +188,7 @@ con.close();
 <td><input type="text" name="pincode" id="pincode" size="30"></td>
 
 </tr>
+
 <tr>
 <td>EmailId</td>
 <td><input type="text" name="emailid" id="emailid" size="30"></td>
@@ -196,13 +197,16 @@ con.close();
 <tr>
 <td>DOB</td>
 <td><input type="text" name="dob" id="dob" size="30"></td>
+
 </tr>
+
+
 
 <tr>
 <td>MobileNo</td>
 <td><input type="text" name="mobileno" id="mobileno" size="30"></td>
 </tr>
-<tr>
+
 
 
 <tr>
