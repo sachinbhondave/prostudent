@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@ page import ="javax.servlet.http.HttpSession" %>
+<%@ page import ="javax.servlet.http.HttpSessionEvent" %>
 <html>
   <head>
   </head>
@@ -20,23 +23,18 @@
       <canvas  id="myCanvas" width="400" height="350"></canvas>  
      
      <%
-  
-     String Course=null;
-     String studentname=null;
 
-     String Coursepaidfee=null;
+String recordedinsert ="yet_to_takephoto";
 
-     String Hobby=null;
+HttpSession session1 = request.getSession();
+String studIMG= (String) session.getAttribute("studIMG");
+if(studIMG!=null)
+{
+    System.out.println("studentName"+studIMG.toString());
+    recordedinsert="studentphotosuccess";
+} 
 
- 
-     Course =(String)request.getAttribute("Course");
-     studentname =(String)	 request.getAttribute("studentname");
-     Coursepaidfee =(String)	 request.getAttribute("Coursepaidfee");
-     Hobby =(String)	 request.getAttribute("Hobby");
-
-     
-     
-     %>
+%>
       
       
       </body>
@@ -104,26 +102,21 @@
        ctx.drawImage(video, 0,0, canvas.width, canvas.height);
        var dataURL = canvas.toDataURL('image/jpeg');
        document.getElementById('field').value= dataURL;
-
+      
       }
-      
-      
-      
-
   </script>
   
   <form name=imagesave action=Ctakeimage  method=Post > 
      
-     <h4>Admiting student- <%=studentname  %> </h4>
-    
-      <input type="hidden" name="Course" id="Course" value= <%= Course %>>
-      <input type="hidden" name="studentname"  id="studentname" value=<%= studentname %>>
-      <input type="hidden"  name="Coursepaidfee"  id="Coursepaidfee" value=<%= Coursepaidfee %>>
-      <input type="hidden"  name="Hobby" id="Hobby" value=<%= Hobby %>>
-      <input type="hidden"  name="field" id="field" value=""/>
-       
+  <input type="hidden"  name="field" id="field" value=""/>
+ 
+  <td> <input type="submit" value="save">
+   <label id="other"> <%= recordedinsert %> </label>
+  
+  <td> <a href="admisiondetailsave.jsp">BACK</a>     
+  <td> <a href="studentfees.jsp">NEXT-student-fees</a>     
       
-      <input type="submit" name="submit" value="submit">
+      
   </form>
  
 </html>

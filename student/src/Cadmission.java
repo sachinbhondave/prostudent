@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
 import student.admissionvo;
 import student.studentJDBCTemplate;
 /**
@@ -15,7 +18,6 @@ import student.studentJDBCTemplate;
  */
 @WebServlet("/Cadmission")
 public class Cadmission extends HttpServlet {
-	
 	
 	admissionvo admissiondetails=new admissionvo();
 	studentJDBCTemplate save=new studentJDBCTemplate();
@@ -38,21 +40,33 @@ public class Cadmission extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    HttpSession session = request.getSession();
+
 		// TODO Auto-generated method stub
-		System.out.println("admision"+request.getParameter("textname"));
-		admissiondetails.setAdname(request.getParameter("textname"));
-		admissiondetails.setAdstd(request.getParameter("std"));
-		admissiondetails.setAdcourse(request.getParameter("Course"));
-		admissiondetails.setAdmedium(request.getParameter("CourseM"));
-		admissiondetails.setAdfees(request.getParameter("Fees"));
-		try {
-			save.saveadmissiondetails(admissiondetails);
- 			response.sendRedirect("http://localhost:7767/student/admissions.jsp");  
- 		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		String studentId =(request.getParameter("studentId"));
+		System.out.println("admision"+request.getParameter("studentId"));
+
+
+		
+		String studentName =(request.getParameter("studentName"));
+		String Course =(request.getParameter("Course"));
+		String vaccination =(request.getParameter("vaccination"));
+		String Blood =(request.getParameter("Blood"));
+
+		session.setAttribute("studentId", studentId);
+		session.setAttribute("studentName", studentName);
+		session.setAttribute("Course", Course);
+		session.setAttribute("vaccination", vaccination);
+		session.setAttribute("Blood", Blood);
+		String bolld=(String) session.getAttribute(Blood);
+		System.out.println("bolldgetAttribute"+bolld);
+
+	  getServletConfig().getServletContext().getRequestDispatcher("/admissions.jsp").forward(request,response);
+
+	
+
+		
 	}
 
 }
