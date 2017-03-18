@@ -1,7 +1,10 @@
 
 
 import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
@@ -34,8 +38,9 @@ public class Ctakeimage extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
+    
+    
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,35 +53,19 @@ public class Ctakeimage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		  HttpSession session = request.getSession();
 		if (!(request.getParameter("field")==null))
 		{
-			  String Course  = request.getParameter("Course");
-			  String studentname  = request.getParameter("studentname");
-			  String Coursepaidfee  = request.getParameter("Coursepaidfee");
-		      String Hobby  = request.getParameter("Hobby");
 		      String Image  = request.getParameter("field");
-				
-		     System.out.println("data"+Course+studentname+Coursepaidfee+Hobby+Image);
-				
-		        sdata.add(Course);	
-				sdata.add(studentname);	
-				sdata.add(Coursepaidfee);					
-				sdata.add(Hobby);	
-				sdata.add(Image);					
-
- 
+		      System.out.println("studentImage"+Image.toString());
+ 		      session.setAttribute("studIMG", Image);
 		}
-		try {
-			stud.savefinaladmission(sdata);
-			sdata.clear();
-			getServletConfig().getServletContext().getRequestDispatcher("/admissionresult.jsp").forward(request,response);
+	
+ 			
+			getServletConfig().getServletContext().getRequestDispatcher("/takeimage.jsp").forward(request,response);
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
-
+		 
+}
+	
 }
