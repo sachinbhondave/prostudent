@@ -53,48 +53,170 @@
 
 <%
 
-String recordedinsert ="yet_to_insert";
+DBconnection hj=new DBconnection();
+Connection con= hj.DBcon();
+ArrayList alname = new ArrayList();
 
-HttpSession session1 = request.getSession();
-String name= (String) session.getAttribute("BC");
-if(name!=null)
-{
-    System.out.println("studentName"+name.toString());
-    recordedinsert="inserted_succcessfully_clickNEXT";
+
+PreparedStatement stname=null;
+Statement statementname = null;
+ResultSet rsname = null;
+String executeQueryname="select distinct (name) from student.charge "; 
+stname= con.prepareStatement(executeQueryname);  
+rsname=stname.executeQuery();
+while(rsname.next()) 
+{ 
+	alname.add(rsname.getString("name"));
+
 } 
 
+
+ArrayList alfeetype= new ArrayList();
+
+
+PreparedStatement stfeetype=null;
+Statement statementfeetype = null;
+ResultSet rsfeetype = null;
+String executeQueryfeetype="select distinct (feetype) from student.charge "; 
+stfeetype= con.prepareStatement(executeQueryfeetype);  
+rsfeetype=stfeetype.executeQuery();
+while(rsfeetype.next()) 
+{ 
+	alfeetype.add(rsfeetype.getString("feetype"));
+
+} 
+
+
+ArrayList alrate = new ArrayList();
+
+PreparedStatement strate=null;
+Statement statementrate = null;
+ResultSet rsrate = null;
+String executeQueryrate="select distinct (rate) from student.charge "; 
+strate= con.prepareStatement(executeQueryrate);  
+rsrate=strate.executeQuery();
+while(rsrate.next()) 
+{ 
+	alrate.add(rsrate.getString("rate"));
+
+} 
+ 
+ArrayList alFrequency = new ArrayList();
+
+
+PreparedStatement stFrequency=null;
+Statement statementFrequency = null;
+ResultSet rsFrequency = null;
+String executeQueryFrequency="select distinct (Frequency) from student.charge "; 
+stFrequency= con.prepareStatement(executeQueryFrequency);  
+rsFrequency=stFrequency.executeQuery();
+while(rsFrequency.next()) 
+{ 
+	alFrequency.add(rsFrequency.getString("Frequency"));
+
+} 
+
+
+ArrayList alDiscount = new ArrayList();
+String studentnameDiscount=null;
+String STDDiscount=null;
+
+PreparedStatement stDiscount=null;
+Statement statementDiscount = null;
+ResultSet rsDiscount = null;
+String executeQueryDiscount="select distinct (Discount) from student.charge "; 
+stDiscount= con.prepareStatement(executeQueryDiscount);  
+rsDiscount=stDiscount.executeQuery();
+while(rsDiscount.next()) 
+{ 
+	alDiscount.add(rsDiscount.getString("Discount"));
+
+} 
 %>
 
-<form id="myform" name="myform" action="admissiondetailsave" enctype="multipart/form-data"  method="Post" >
-<center><font size=4><b>Student admission certificate upload </b></font></center>
+<form id="myformnew" name="myformnnew" action="admissiondetailfinalsave" method="Post" >
+<center><font size=4><b>Student admission Fees structure </b></font></center>
 <table>
 
 <tr>
-<td>Birth Certificate</td>
- <td><input type="file" name="photo" size="30"/></td>
+<td>Fee name </td>
+<td>Fee TYPE </td>
+<td>Fee Rate </td>
+<td>Fee Frequency </td>
+<td>Fee Discount </td>
+
+</tr>
+<% for(int k = 0; k < alname.size(); k+=1) { %>
+<tr>
+ <td> <select Name=name  id=name  >
+   <%  for(int i = 0; i < alname.size(); i++) {
+	   
+	   String option1 = (String)alname.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alfeetype  id=alfeetype  >
+   <%  for(int i = 0; i < alfeetype.size(); i++) {
+	   
+	   String option1 = (String)alfeetype.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alrate  id=alrate  >
+   <%  for(int i = 0; i < alrate.size(); i++) {
+	   
+	   String option1 = (String)alrate.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alFrequency  id=alFrequency  >
+   <%  for(int i = 0; i < alFrequency.size(); i++) {
+	   
+	   String option1 = (String)alFrequency.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+
+
+ <td> <select Name=alDiscount  id=alDiscount  >
+   <%  for(int i = 0; i < alDiscount.size(); i++) {
+	   
+	   String option1 = (String)alDiscount.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
 </tr>
 
- 	 	 
-<tr>
-<td>School leaving Certificate</td>
-<td><input type="file" name="LC" id="LC" size="30"  ></td>
-
-</tr> 	 	 
- 	 	 
-<tr>
-<td>Address Proof</td>
-<td><input type="file" name="AddressProof" id="AddressProof" size="30"  ></td>
-
-</tr> 	
+	 	 
+ 	
 
  <tr>
+ <% } %>
+ 
 <td>save details</td>
 <td> <input type="submit" value="save">
-
-</td>
-<label id="other"> <%= recordedinsert %> </label>
-
-<td> <a href="takeimage.jsp">TakePhoto</a>  
+ </td>
+ <td> <a href="takeimage.jsp">back</a>  
 
 </td>
 
