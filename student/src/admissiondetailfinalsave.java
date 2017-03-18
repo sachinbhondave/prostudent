@@ -35,7 +35,7 @@ public class admissiondetailfinalsave extends HttpServlet {
 	    HttpSession session = request.getSession();
 
 		
-		String studentId=(String) session.getAttribute("studentId");
+		String studentId=(String) session.getAttribute("studentnameforid");
 		String studentName=(String) session.getAttribute("studentName");
 		String Course=(String) session.getAttribute("Course");
 		String vaccination=(String) session.getAttribute("vaccination");
@@ -46,7 +46,7 @@ public class admissiondetailfinalsave extends HttpServlet {
 		String BC=(String) session.getAttribute("BC");
 		String LC=(String) session.getAttribute("LC");
 		String add=(String) session.getAttribute("add");
-		System.out.println("admisiondataupload"+BC+LC+add);
+	//	System.out.println("admisiondataupload"+BC+LC+add);
 		
 		String studIMG=(String) session.getAttribute("studIMG");
 		
