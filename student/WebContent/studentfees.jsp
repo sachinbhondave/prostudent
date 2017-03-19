@@ -139,15 +139,14 @@ while(rsDiscount.next())
 <table>
 
 <tr>
-<td>Fee name </td>
-<td>Fee TYPE </td>
-<td>Fee Rate </td>
-<td>Fee Frequency </td>
-<td>Fee Discount </td>
-
+<td><B>Fee name</B> </td>
+<td><b>Fee TYPE</b> </td>
+<td><b>Fee Rate </b></td>
+<td><b>Fee Frequency</b> </td>
+<td><b>Fee Discount</b> </td>
 </tr>
-<% for(int k = 0; k < alname.size(); k+=1) { %>
-<tr>
+
+ <tr>
  <td> <select Name=name  id=name  >
    <%  for(int i = 0; i < alname.size(); i++) {
 	   
@@ -206,12 +205,251 @@ while(rsDiscount.next())
     %>
 </select></td>
 </tr>
+  
+ 
+ <tr>
+ <td> <select Name=name1  id=name1  >
+   <%  for(int i = 0; i < alname.size(); i++) {
+	   
+	   String option1 = (String)alname.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alfeetype1  id=alfeetype1  >
+   <%  for(int i = 0; i < alfeetype.size(); i++) {
+	   
+	   String option1 = (String)alfeetype.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alrate1  id=alrate1  >
+   <%  for(int i = 0; i < alrate.size(); i++) {
+	   
+	   String option1 = (String)alrate.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alFrequency1  id=alFrequency1  >
+   <%  for(int i = 0; i < alFrequency.size(); i++) {
+	   
+	   String option1 = (String)alFrequency.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
 
-	 	 
- 	
+
+ <td> <select Name=alDiscount1  id=alDiscount1  >
+   <%  for(int i = 0; i < alDiscount.size(); i++) {
+	   
+	   String option1 = (String)alDiscount.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+</tr>
+   
+ 
+ 
+  <tr>
+ <td> <select Name=name2  id=name2  >
+   <%  for(int i = 0; i < alname.size(); i++) {
+	   
+	   String option1 = (String)alname.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alfeetype2  id=alfeetype2  >
+   <%  for(int i = 0; i < alfeetype.size(); i++) {
+	   
+	   String option1 = (String)alfeetype.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alrate2  id=alrate2  >
+   <%  for(int i = 0; i < alrate.size(); i++) {
+	   
+	   String option1 = (String)alrate.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alFrequency2  id=alFrequency2  >
+   <%  for(int i = 0; i < alFrequency.size(); i++) {
+	   
+	   String option1 = (String)alFrequency.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+
+
+ <td> <select Name=alDiscount2  id=alDiscount2  >
+   <%  for(int i = 0; i < alDiscount.size(); i++) {
+	   
+	   String option1 = (String)alDiscount.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+</tr>
 
  <tr>
- <% } %>
+ <td> <select Name=name3  id=name3  >
+   <%  for(int i = 0; i < alname.size(); i++) {
+	   
+	   String option1 = (String)alname.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alfeetype3  id=alfeetype3  >
+   <%  for(int i = 0; i < alfeetype.size(); i++) {
+	   
+	   String option1 = (String)alfeetype.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alrate3  id=alrate3  >
+   <%  for(int i = 0; i < alrate.size(); i++) {
+	   
+	   String option1 = (String)alrate.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alFrequency3  id=alFrequency3  >
+   <%  for(int i = 0; i < alFrequency.size(); i++) {
+	   
+	   String option1 = (String)alFrequency.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+
+
+ <td> <select Name=alDiscount3  id=alDiscount3  >
+   <%  for(int i = 0; i < alDiscount.size(); i++) {
+	   
+	   String option1 = (String)alDiscount.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+</tr>
+    
+  <tr>
+ <td> <select Name=name4  id=name4  >
+   <%  for(int i = 0; i < alname.size(); i++) {
+	   
+	   String option1 = (String)alname.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alfeetype4  id=alfeetype4  >
+   <%  for(int i = 0; i < alfeetype.size(); i++) {
+	   
+	   String option1 = (String)alfeetype.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alrate4  id=alrate4  >
+   <%  for(int i = 0; i < alrate.size(); i++) {
+	   
+	   String option1 = (String)alrate.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+ <td> <select Name=alFrequency4  id=alFrequency4  >
+   <%  for(int i = 0; i < alFrequency.size(); i++) {
+	   
+	   String option1 = (String)alFrequency.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+
+
+ <td> <select Name=alDiscount4  id=alDiscount4  >
+   <%  for(int i = 0; i < alDiscount.size(); i++) {
+	   
+	   String option1 = (String)alDiscount.get(i);
+   %>  <option>
+   </option> 
+    <option value="<%= option1 %>"><%= option1 %>
+   </option>
+   <% } 
+    %>
+</select></td>
+</tr>
+  
+ <tr>
  
 <td>save details</td>
 <td> <input type="submit" value="save">
