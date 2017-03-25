@@ -130,14 +130,14 @@ String Course=(String) request.getAttribute("Course");
 String  coursefees=null;
 PreparedStatement Courseps =null;	
 ResultSet Coursers = null;
-String executeCoursersl="SELECT onetime FROM charge where name = ? "; 
+String executeCoursersl="SELECT Frequency FROM charge where name = ? "; 
 Courseps= con.prepareStatement(executeCoursersl);  
 Courseps.setString(1, Course);
 Coursers=Courseps.executeQuery();
 
 while(Coursers.next()) 
 { 
-	coursefees=(Coursers.getString("onetime"));
+	coursefees=(Coursers.getString("Frequency"));
 }
 
 String studentiddata=null;
@@ -146,9 +146,11 @@ String  studentnameforid= null;
 studentnameforid=(String) request.getParameter("studentId");
 System.out.println("dataidasdadad"+studentnameforid);
 
+
+
 if  (studentnameforid !=null)
 {
-    request.setAttribute("studentnameforid",studentnameforid);
+    session.setAttribute("studentnameforid",studentnameforid);
  
 	int studid=Integer.valueOf(studentnameforid);
 
