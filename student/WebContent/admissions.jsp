@@ -121,7 +121,7 @@ rsl=stl.executeQuery();
 
 while(rsl.next()) 
 { 
- all.add(rsl.getInt("studentid"));
+ all.add(rsl.getInt("studentid")) ;
 
 }
 
