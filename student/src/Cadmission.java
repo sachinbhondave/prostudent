@@ -59,8 +59,6 @@ public class Cadmission extends HttpServlet {
 		session.setAttribute("Course", Course);
 		session.setAttribute("vaccination", vaccination);
 		session.setAttribute("Blood", Blood);
-		String bolld=(String) session.getAttribute(Blood);
-		System.out.println("bolldgetAttribute"+bolld);
 
 	  getServletConfig().getServletContext().getRequestDispatcher("/admissions.jsp").forward(request,response);
 
