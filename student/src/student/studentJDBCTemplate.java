@@ -99,15 +99,18 @@ public class studentJDBCTemplate  {
 		    int sid=0;
 		      
 		   System.out.println("sdata"+sdata.toString());
-		   
-		      String Course  =  sdata.get(0);
-		      String studentname  = sdata.get(1);
-		      String Coursepaidfee  = sdata.get(2);
-		      String Hobby  =  sdata.get(3);
-		      String Image  =  sdata.get(4);
-							
+  		   
+		      String Image  =  sdata.get(0);
+		      String studentid  = sdata.get(1);
+		      String studentName  = sdata.get(2);
+		      String Course  =  sdata.get(3);
+		      String vaccination  =  sdata.get(4);
+		      String blood  =  sdata.get(4);
+			
 			   System.out.println("sdaczxczxczxzcta"+sdata.toString());
+			   System.out.println("sdaczxczxczxzcta"+studentid);
 
+              int studid=Integer.valueOf(studentid);
 
 		   byte[] buff=Image.getBytes();
 		      try {
@@ -121,7 +124,7 @@ public class studentJDBCTemplate  {
 			}
 		 
  		  
-		
+		/*
 		  PreparedStatement ps=null;	
 		  ResultSet rsll = null;
 
@@ -139,22 +142,22 @@ public class studentJDBCTemplate  {
 
 		 
 		 }
-     
+     */
        /*getting current date time using calendar class 
         * An Alternative of above*/
        
-       PreparedStatement pss=null;	
+          PreparedStatement pss=null;	
 		  ResultSet rslls = null;
 
-		    String executeQuerylls="insert into admissionsave(studentid, studentname,studentimage,hobby,admissiondate,std,fees) values (?,?,?,?,CURDATE(),?,?) "; 
+		    String executeQuerylls="update admissionsave set studentname=? , Course=? , vaccination=? ,Blood=? , studimg=?  where studentid=?  "; 
 		    		
 			pss =  studentJDBCTemplate.DB().prepareStatement(executeQuerylls);
-			pss.setInt(1,sid);
-			pss.setString(2,studentname);
-			pss.setBlob(3,blobimage);
-			pss.setString(4,Hobby);
-			pss.setString(5,Course);
-			pss.setString(6,Coursepaidfee);
+			pss.setString(1,studentName);
+			pss.setString(2,Course);
+			pss.setString(3,vaccination);
+			pss.setString(4,blood);
+			pss.setBlob(5,blobimage);
+			pss.setInt(6,studid);
 
 			int out = pss.executeUpdate();
  			System.out.println("admissionsave"+out);
