@@ -30,6 +30,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.Part;
 
+import student.DBconnection;
 import student.studentJDBCTemplate;
 
 /**
@@ -48,9 +49,12 @@ public class admissiondetailsave extends HttpServlet {
      String    BirtCertificate=null;
      String    vaccination=null;
      String  Blood=null;
-     String   LC=null;
      String   AddressProof=null;
-			 
+     InputStream   name =null;	 
+     InputStream   LC =null;	 
+     InputStream    add =null;	 
+     Connection	con=null;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -117,8 +121,8 @@ public class admissiondetailsave extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         
-
         HttpSession session = request.getSession();
+
 
       
        
@@ -126,34 +130,9 @@ public class admissiondetailsave extends HttpServlet {
 	         studentname=request.getParameter("studentName");
 	         Coursepaidfee=request.getParameter("Coursepaidfee");
 	         Hobby=request.getParameter("Hobby");
-	          BirtCertificate=request.getParameter("photo");
-	      //   FileInputStream fis=new FileInputStream(request.getParameter("photo")); 
-	         System.out.println("studentname"+studentname+Coursepaidfee+Hobby+BirtCertificate);
+	         BirtCertificate=request.getParameter("photo");
+	     
 
-	         /*vaccination=request.getParameter("vaccination");
-	         Blood=request.getParameter("Blood");
-	         LC=request.getParameter("LC");
-	         AddressProof=request.getParameter("AddressProof");
-*/
-	         /* File imgfile = new File("photo");
-              FileInputStream fin = new FileInputStream(imgfile);
-	             System.out.println("findata"+fin);
-
-	         
-	         // obtains the upload file part in this multipart request
-	         Part filePart = request.getPart("photo");
-	         if (filePart != null) {
-	             // prints out some information for debugging
-	             System.out.println(filePart.getName());
-	             System.out.println(filePart.getSize());
-	             System.out.println(filePart.getContentType());
-	             InputStream inputStream = null; 
-
-	             // obtains input stream of the upload file
-	             inputStream = filePart.getInputStream();
-	           
-	             System.out.println("filePart.getName()"+inputStream); }
-*/
 	        	
 	         boolean isMultiPart = ServletFileUpload.isMultipartContent(request);
 	         if (isMultiPart) {
@@ -162,21 +141,17 @@ public class admissiondetailsave extends HttpServlet {
 	             List items = null;
 	 			try {
 	 				items = upload.parseRequest(request);
-	 		         System.out.println("studentnameServletFileUpload"+items.toString());
 	  				
 	 			} catch (FileUploadException e) {
 	 				// TODO Auto-generated catch block
 	 				e.printStackTrace();
 	 			}
 	             Iterator<FileItem> iter = items.iterator();
- 		         System.out.println("studentnameServletFileUpload2"+iter.hasNext());
 
 	             while (iter.hasNext()) {
-	 		         System.out.println("studentnameServletFileUpload3"+iter.hasNext());
 
 	                 FileItem fileItem = iter.next();
 	                 if (!fileItem.isFormField()) {
-		 		         System.out.println("studentnameServletFileUpload4"+fileItem.toString());
 
 	                     processFormField(fileItem,session);
 	                 } else {
@@ -184,7 +159,10 @@ public class admissiondetailsave extends HttpServlet {
 	             }
 	             
 	         }
-	       
+	      
+	         
+	         SBsave( request);
+	         
 	         String name= (String) session.getAttribute("add");
 
  	         session.setAttribute("UserName", Course);			
@@ -196,29 +174,127 @@ public class admissiondetailsave extends HttpServlet {
 
         //String na = item.getFieldName();
              if (item.getFieldName().equals("photo")) {
-              String   name = item.getString();
- 	         session.setAttribute("BC", name);			
+            try {
+				name = item.getInputStream();
+	  			System.out.println("admisiondatastartgetInputStream" +name);
+
+			} catch (IOException e) {
+	  			System.out.println("admisiondatastartgetInputStream" +name);
+
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+              
+              
+ 	       //  session.setAttribute("BC", name);			
 
         } else if (item.getFieldName().equals("LC")) {
-        	String    LC = item.getString();
- 	         session.setAttribute("LC", LC);			
+             try {
+				LC = item.getInputStream();
+	  			System.out.println("admisiondatastartgetInputStream" +LC);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+ 	      //   session.setAttribute("LC", LC);			
 
         } else if (item.getFieldName().equals("AddressProof")) {
-            String add = item.getString();
- 	         session.setAttribute("add", add);			
+        	
+             try {
+				add = item.getInputStream();
+	  			System.out.println("admisiondatastartgetInputStream" +add);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+ 	      //   session.setAttribute("add", add);			
 
 
            
         }
    
+          
 	}
-		 
-			
-		
-		
 			
 	
+		
+			
+	  public void SBsave ( HttpServletRequest request ){   
+          
+	        HttpSession session = request.getSession();
 
+          DBconnection hj=new DBconnection();
+   		try {
+  		con= hj.DBcon();
+  		} catch (SQLException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+   		
+   		try {
+   	 		
+  		/*	
+  	 		String executeQuery=" insert into admissionsave (studentid,BC) values (?,?) " ; 
+  	 		String executeQuery1=" UPDATE admissionsave SET  AP= ? WHERE studentid = ? ";
+   	 		String executeQuery2=" UPDATE admissionsave SET  LC= ?  WHERE studentid = ? "; 
+
+  	      	java.sql.PreparedStatement st=null;
+  	      	java.sql.PreparedStatement st1=null;
+  	      	java.sql.PreparedStatement st2=null;
+
+  			System.out.println("admisiondatastart" +name);
+  			String studentId=(String) session.getAttribute("studentnameforid");
+ 			st= con.prepareStatement(executeQuery);
+ 			st1= con.prepareStatement(executeQuery1);
+ 			st2= con.prepareStatement(executeQuery2);
+
+  			System.out.println("admisiondatastart_id" +studentId);
+
+  		 	 int studid;
+  			 studid= 15;
+  			
+  			 st.setInt(1, studid);
+  			 st.setBlob(2, name);
+  			 st.executeUpdate();
+  			 st1.setBlob(1, add);
+  			 st1.setInt(2, studid);
+  			 st1.executeUpdate();
+
+  			 st2.setBlob(1, LC);
+ 			 st2.setInt(2, studid);
+  			 st2.executeUpdate();*/
+  	      	java.sql.PreparedStatement st=null;
+
+  	 		String executeQuery=" insert into admissionsave(studentid,BC,LC,AP) values (?,?,?,?) " ; 
+
+   			
+   			System.out.println("admisiondatastart" +name);
+  			String studentId=(String) session.getAttribute("studentnameforid");
+   			System.out.println("admisiondatastartstudentId" +studentId);
+ 			st= con.prepareStatement(executeQuery);
+
+  			int stuid=Integer.valueOf(studentId);
+  	      	
+  	     	 st.setInt(1, stuid);
+			 st.setBlob(2, name);
+			 st.setBlob(3, LC);
+			 st.setBlob(4, add);
+
+			 st.executeUpdate();
+  			System.out.println("admisiondatastartend");
+
+  		} catch (SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}  
+          
+	}
+		 
+	
 	
 	
 	
