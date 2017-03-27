@@ -107,10 +107,12 @@ if(studIMG!=null)
   </script>
   
   <form name=imagesave action=Ctakeimage  method=Post > 
-     
-  <input type="hidden"  name="field" id="field" value=""/>
  
-  <td> <input type="submit" value="save">
+ 
+   <input type="text"  name="field" id="field" value=""/>
+       
+   <input type="submit" name="submit" value="submit">
+  
    <label id="other"> <%= recordedinsert %> </label>
   
   <td> <a href="admisiondetailsave.jsp">BACK</a>     
