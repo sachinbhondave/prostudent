@@ -55,7 +55,7 @@ public class admissiondetailfinalsave extends HttpServlet {
 		Connection con=null;
 	    HttpSession session = request.getSession();
 		
-		
+		/*
 		String studentName=(String) session.getAttribute("studentName");
 		
 		String Course=(String) session.getAttribute("Course");
@@ -65,43 +65,45 @@ public class admissiondetailfinalsave extends HttpServlet {
 		 String item2=(String) session.getAttribute("LC");
 
 		 String item3=(String) session.getAttribute("add");
-		 System.out.println("admisiondata"+studentName+Course+vaccination+Blood);
-		  
-		 InputStream inputStream = null;  
+		 System.out.println("admisiondata"+studentName+Course+vaccination+Blood);*/
+		  String studentid = (String)session.getAttribute("studentnameforid");
+          int studid=Integer.valueOf(studentid);
+		//  int studid=20;
+		// InputStream inputStream = null;  
  
-		 String studIMG=(String) session.getAttribute("studIMG");
+	//	 String studIMG=(String) session.getAttribute("studIMG");
 		
- 		System.out.println("admisiondataimage"+studIMG);
+ 		System.out.println("admisiondataimage"+studid);
 
- 		String name =request.getParameter("name");
- 		String alfeetype =request.getParameter("alfeetype");
- 		String alrate =request.getParameter("alrate");
- 		String alFrequency =request.getParameter("alFrequency");
- 		String alDiscount =request.getParameter("alDiscount");
+ 		String name0 =request.getParameter("name");
+ 		String alfeetype0 =request.getParameter("alfeetype");
+ 		String alrate0 =request.getParameter("alrate");
+ 		String alFrequency0 =request.getParameter("alFrequency");
+ 		String alDiscount0 =request.getParameter("alDiscount");
  		
- 		String name1 =request.getParameter("name1");
- 		String alfeetype1 =request.getParameter("alfeetype1");
- 		String alrate1 =request.getParameter("alrate1");
- 		String alFrequency1 =request.getParameter("alFrequency1");
- 		String alDiscount1 =request.getParameter("alDiscount1");
+ 		String name01 =request.getParameter("name1");
+ 		String alfeetype01 =request.getParameter("alfeetype1");
+ 		String alrate01 =request.getParameter("alrate1");
+ 		String alFrequency01 =request.getParameter("alFrequency1");
+ 		String alDiscount01 =request.getParameter("alDiscount1");
  		
- 		String name2 =request.getParameter("name2");
- 		String alfeetype2 =request.getParameter("alfeetype2");
- 		String alrate2 =request.getParameter("alrate2");
- 		String alFrequency2 =request.getParameter("alFrequency2");
- 		String alDiscount2 =request.getParameter("alDiscount2");
+ 		String name012 =request.getParameter("name2");
+ 		String alfeetype012 =request.getParameter("alfeetype2");
+ 		String alrate012 =request.getParameter("alrate2");
+ 		String alFrequency012 =request.getParameter("alFrequency2");
+ 		String alDiscount012 =request.getParameter("alDiscount2");
  		
- 		String name3 =request.getParameter("name3");
- 		String alfeetype3 =request.getParameter("alfeetype3");
- 		String alrate3 =request.getParameter("alrate3");
- 		String alFrequency3 =request.getParameter("alFrequency3");
- 		String alDiscount3 =request.getParameter("alDiscount3");
+ 		String name0123 =request.getParameter("name3");
+ 		String alfeetype0123 =request.getParameter("alfeetype3");
+ 		String alrate0123 =request.getParameter("alrate3");
+ 		String alFrequency0123 =request.getParameter("alFrequency3");
+ 		String alDiscount0123 =request.getParameter("alDiscount3");
  		
- 		String name4 =request.getParameter("name4");
- 		String alfeetype4 =request.getParameter("alfeetype4");
- 		String alrate4 =request.getParameter("alrate4");
- 		String alFrequency4 =request.getParameter("alFrequency4");
- 		String alDiscount4 =request.getParameter("alDiscount4");
+ 		String name01234 =request.getParameter("name4");
+ 		String alfeetype01234 =request.getParameter("alfeetype4");
+ 		String alrate01234 =request.getParameter("alrate4");
+ 		String alFrequency01234 =request.getParameter("alFrequency4");
+ 		String alDiscount01234 =request.getParameter("alDiscount4");
  		
  		DBconnection hj=new DBconnection();
  		try {
@@ -112,35 +114,80 @@ public class admissiondetailfinalsave extends HttpServlet {
 		}
  		
  		try {
- 		
+ 		  	String namex=null;
+	       	String alfeetypex=null;
+	       	String alratex=null;
+ 	       	String alFrequencyx=null;
+ 	       	String alDiscountx=null;
+
  			
- 	 		String executeQuery="insert into admissionsave (studentid, studentname,Course,vaccination,Blood,BC,LC,add,studimg) values (?,?,?,?,?,?,?,?,?) "; 
+ 	 		String executeQuery="insert into admissionfees (studentid,feename,feetype_std,rate,freq,discount) values (?,?,?,?,?,?) "; 
 
  	      	java.sql.PreparedStatement st=null;
  		 
- 			System.out.println("admisiondatastart");
- 			String studentId=(String) session.getAttribute("studentnameforid");
-			st=  con.prepareStatement(executeQuery);
-
- 		 	  int studid;
- 			 studid= Integer.valueOf(studentId);
+ 	         namex=name0;
+	       	 alfeetypex=alfeetype0;
+	       	 alratex=alrate0;
+	       	 alFrequencyx=alFrequency0;
+	       	 alDiscountx=alDiscount0;
+ 	      	
+	       	 for (int i=1 ;i<6; i++)
+ 	      	{
+ 	      	
+ 			System.out.println("admisiondatastart" + i);
  			
+ 			//String studentId=(String) session.getAttribute("studentnameforid");
+			st=con.prepareStatement(executeQuery);
+   
  			 st.setInt(1, studid);
-  			 st.setString(2, studentName);
-			 st.setString(3, Course);
-			 st.setString(4, vaccination);
- 			 st.setString(5, Blood);
- 			 st.setString(6, item1);
- 			 st.setString(7, item2);
- 			 st.setString(8, item3);
-    		 st.setString(9, studIMG);
-
-
- 		    int rs;
-
-		
+  			 st.setString(2, namex);
+			 st.setString(3, alfeetypex);
+			 st.setString(4, alratex);
+ 			 st.setString(5, alFrequencyx);
+ 			 st.setString(6, alDiscountx);
+   		     int rs;
+   		   
+             if (i==2)
+             {
+             namex=alfeetype01;
+     	     alfeetypex=alfeetype01;
+    	     alratex=alrate01;
+	       	 alFrequencyx=alFrequency01;
+	       	 alDiscountx=alDiscount01;
+             }
+             if (i==3)
+             {  
+            	 
+             namex=alfeetype012;
+     	     alfeetypex=alfeetype012;
+    	     alratex=alrate012;
+	       	 alFrequencyx=alFrequency012;
+	       	 alDiscountx=alDiscount012;
+            	 
+             }
+             if (i==4)
+             {  
+            	 
+             namex=alfeetype0123;
+     	     alfeetypex=alfeetype0123;
+    	     alratex=alrate0123;
+	       	 alFrequencyx=alFrequency0123;
+	       	 alDiscountx=alDiscount0123;
+            	 
+             }
+             if (i==5)
+             {  
+            	 
+             namex=alfeetype01234;
+     	     alfeetypex=alfeetype01234;
+    	     alratex=alrate01234;
+	       	 alFrequencyx=alFrequency01234;
+	       	 alDiscountx=alDiscount01234;
+            	 
+             }
 			rs=st.executeUpdate();
  			System.out.println("admisiondatastartend");
+ 	      	}
 
  		} catch (SQLException e) {
 			// TODO Auto-generated catch block
