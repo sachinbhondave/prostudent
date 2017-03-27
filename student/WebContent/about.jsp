@@ -155,7 +155,7 @@ Statement statement = null;
 ResultSet rs1 = null;
 ResultSet rs2 = null;
 String executeQuery="select examdate from student.exam "; 
-String executeQuery1="SELECT kl.onetime FROM student.charge kl where kl.name='registration' "; 
+String executeQuery1="SELECT kl.rate  FROM student.charge kl where kl.name='RegistrationFee' "; 
 
 st= con.prepareStatement(executeQuery);  
 st1= con.prepareStatement(executeQuery1);  
@@ -174,7 +174,7 @@ while(rs1.next())
 while(rs2.next()) 
 { 
 
-  reg_fee=(rs2.getString("onetime"));
+  reg_fee=(rs2.getString("rate"));
 } 
 con.close();
 %>
