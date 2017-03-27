@@ -188,7 +188,8 @@ public class admissiondetailfinalsave extends HttpServlet {
 			rs=st.executeUpdate();
  			System.out.println("admisiondatastartend");
  	      	}
-
+	       	getServletConfig().getServletContext().getRequestDispatcher("/admissions.jsp").forward(request,response);
+ 		
  		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
