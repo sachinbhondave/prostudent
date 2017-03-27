@@ -138,18 +138,19 @@ public class admissiondetailfinalsave extends HttpServlet {
  			
  			//String studentId=(String) session.getAttribute("studentnameforid");
 			st=con.prepareStatement(executeQuery);
-   
+			if (i==1)
+            {
  			 st.setInt(1, studid);
   			 st.setString(2, namex);
 			 st.setString(3, alfeetypex);
 			 st.setString(4, alratex);
  			 st.setString(5, alFrequencyx);
  			 st.setString(6, alDiscountx);
-   		     int rs;
-   		   
+   		     
+            }
              if (i==2)
              {
-             namex=alfeetype01;
+             namex=name01;
      	     alfeetypex=alfeetype01;
     	     alratex=alrate01;
 	       	 alFrequencyx=alFrequency01;
@@ -158,7 +159,7 @@ public class admissiondetailfinalsave extends HttpServlet {
              if (i==3)
              {  
             	 
-             namex=alfeetype012;
+             namex=name012;
      	     alfeetypex=alfeetype012;
     	     alratex=alrate012;
 	       	 alFrequencyx=alFrequency012;
@@ -168,7 +169,7 @@ public class admissiondetailfinalsave extends HttpServlet {
              if (i==4)
              {  
             	 
-             namex=alfeetype0123;
+             namex=name0123;
      	     alfeetypex=alfeetype0123;
     	     alratex=alrate0123;
 	       	 alFrequencyx=alFrequency0123;
@@ -178,13 +179,14 @@ public class admissiondetailfinalsave extends HttpServlet {
              if (i==5)
              {  
             	 
-             namex=alfeetype01234;
+             namex=name01234;
      	     alfeetypex=alfeetype01234;
     	     alratex=alrate01234;
 	       	 alFrequencyx=alFrequency01234;
 	       	 alDiscountx=alDiscount01234;
             	 
              }
+             int rs;
 			rs=st.executeUpdate();
  			System.out.println("admisiondatastartend");
  	      	}
