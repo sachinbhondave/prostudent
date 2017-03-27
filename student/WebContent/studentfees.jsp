@@ -140,7 +140,7 @@ while(rsDiscount.next())
 
 <tr>
 <td><B>Fee name</B> </td>
-<td><b>Fee TYPE</b> </td>
+<td><b>Fee-type&STD</b> </td>
 <td><b>Fee Rate </b></td>
 <td><b>Fee Frequency</b> </td>
 <td><b>Fee Discount</b> </td>
