@@ -138,9 +138,11 @@ public class admissiondetailfinalsave extends HttpServlet {
  			
  			//String studentId=(String) session.getAttribute("studentnameforid");
 			st=con.prepareStatement(executeQuery);
-			if (i==1)
-            {
+			
  			 st.setInt(1, studid);
+ 			 
+ 			if (i==1)
+            {
   			 st.setString(2, namex);
 			 st.setString(3, alfeetypex);
 			 st.setString(4, alratex);
